@@ -1,4 +1,4 @@
-# Arch 
+# Arch sound fixes
 
 ## For Huawei D14 matebook need
 * sudo vim /etc/default/grub

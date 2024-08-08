@@ -1,0 +1,16 @@
+[font]
+size = 13.0
+
+[font.normal]
+family = "JetBrains Mono"
+style = "regular"
+
+[window]
+opacity = 1.0
+
+[window.padding]
+x = 15
+y = 15
+
+[selection]
+save_to_clipboard = true

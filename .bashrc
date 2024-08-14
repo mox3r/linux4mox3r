@@ -21,6 +21,17 @@ alias nf='neofetch'
 alias ff='clear && neofetch'
 alias wttr='$HOME/l4m-dotfiles/scripts/weather.sh'
 
+#git
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gst="git stash"
+alias gsp="git stash; git pull"
+alias gcheck="git checkout"
+alias gcredential="git config credential.helper store"
+
 #eza
 alias ls='eza --icons'
 alias ll='eza -agl --icons'
@@ -39,6 +50,8 @@ alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
 
 
 eval "$(starship init bash)"
+
+cat $HOME/.cache/wal/sequences
 
 if [[ $(tty) != *i* ]] ; then
 	neofetch

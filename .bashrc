@@ -40,18 +40,16 @@ alias ld='eza -glD --icons'
 alias lf='eza -glf --color=always --icons'
 alias lh='eza -dgl .* --icons'
 
-alias pacman='sudo pacman --color=auto'
-
 alias v='$EDITOR'
 alias vim='$EDITOR'
 
 alias grep='grep --color=always'
-alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
+#alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
 
 
 eval "$(starship init bash)"
 
-cat $HOME/.cache/wal/sequences
+#cat $HOME/.cache/wal/sequences
 
 if [[ $(tty) != *i* ]] ; then
 	neofetch

@@ -44,7 +44,7 @@ alias v='$EDITOR'
 alias vim='$EDITOR'
 
 alias grep='grep --color=always'
-#alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
+alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
 
 
 eval "$(starship init bash)"

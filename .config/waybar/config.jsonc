@@ -6,35 +6,35 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [
+    "modules-center": [
         "power-profiles-daemon",
         "cpu",
         "memory",
-        "temperature",
+        "temperature"
         // "sway/mode",
         // "sway/scratchpad",
         // "custom/media",
-        "hyprland/workspaces"
     ],
-    "modules-center": [
-        "hyprland/window"
+    "modules-left": [
+        // "hyprland/window"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         //"mpd",
         // "idle_inhibitor",
-        "pulseaudio",
-        "network",
-        "backlight",
         "battery",
+        "backlight",
+        "pulseaudio",
         //"battery#bat2",
         "hyprland/language",
         // "keyboard-state",
         "clock",
+        "network",
         "tray"
     ],
     // Modules configuration
     "hyprland/workspaces": {
-         "disable-scroll": true,
+         "disable-scroll": false,
          "all-outputs": true,
          "warp-on-scroll": false,
          "format": "{icon}",
@@ -103,25 +103,28 @@
     // },
     "hyprland/language": {
 	    "format": "{short}",
-	  //  "format-en": "EN",
-	  //  "format-ru": "RU"
+	    // "format-en": "EN",
+	    // "format-ru": "RU"
     },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "Europe/Minsk",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage}%",
-        "tooltip": false,
+        "format": " {load}%",
+        "tooltip": true,
+        "tooltip-format": "avg_frequency",
 		"on-click": "alacritty --class htop -e htop"
     },
     "memory": {
-        "format": " {}%",
+        "interval": "10",
+        "format": " {used} GiB",
+        "tooltip-format": "Mem: {percentage}% / Swap: {swapPercentage}%",
 		"on-click": "alacritty --class htop -e htop"
     },
     "temperature": {
@@ -134,7 +137,7 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{icon} {percent}%",
         "format-icons": ["", ""]
     },
     "battery": {
@@ -143,8 +146,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon}{capacity}%",
         "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
@@ -157,27 +160,27 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": " ",
-        "performance": " ",
-        "balanced": " ",
-        "power-saver": " "
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
       }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
 	// {essid} - wifi name {signalStrength} - % of signal strenght
 	// {ifname} - {gwaddr} - old hint(tooltip)
-        "format-wifi": " ",
+        "format-wifi": "",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} ({signalStrength})% ",
+        "tooltip-format": "{essid} ({signalStrength})%",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "⚠",
         // "format-alt": "{ifname}: {ipaddr}/{cidr}"
         "on-click": "iwgtk"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
+        "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -191,7 +194,7 @@
             "portable": " ",
             "car": " ",
 
-            "default": ["♪"]
+            "default": ["","",""]
         },
         "on-click": "pavucontrol"
     },

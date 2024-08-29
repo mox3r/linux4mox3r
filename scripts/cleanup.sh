@@ -4,7 +4,7 @@ clear
 
 echo ":: Cleanup!"
 
-sudo pacman -Rns $(pacman Qtdq)
+sudo pacman -Rns $(pacman -Qtdq)
 
 yay -Scc
 

@@ -102,7 +102,7 @@
     //     }
     // },
     "hyprland/language": {
-	    "format": "{short}",
+	    "format": "{short}"
 	    // "format-en": "EN",
 	    // "format-ru": "RU"
     },
@@ -116,6 +116,7 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
+        "interval": "10",
         "format": " {load}%",
         "tooltip": true,
         "tooltip-format": "avg_frequency",

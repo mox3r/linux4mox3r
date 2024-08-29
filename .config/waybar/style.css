@@ -122,9 +122,7 @@
 #network.disconnected {
 	color: #f53c3c;
 }
-#backlight. {
-	color:#0db9d7;
-}
+
 #battery.charging, #battery.plugged{
 	color: #2ecc71;
 }

@@ -23,6 +23,7 @@ let g:material_theme_style = 'darker'
 
 
 let g:airline#extensions#enabled = 1
+let g:airline_powerline_fonts = 1
 
 if(has('termguicolors'))
 	set termguicolors

@@ -102,30 +102,32 @@
     //     }
     // },
     "hyprland/language": {
+
 	    "format": "{short}"
-	    // "format-en": "EN",
-	    // "format-ru": "RU"
+		// "format-en": "EN"
     },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
+		"interval": 1,
+		"format": "{:%H:%M:%S}",
         "timezone": "Europe/Minsk",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "interval": "10",
+        "interval": 10,
         "format": " {load}%",
         "tooltip": true,
         "tooltip-format": "avg_frequency",
 		"on-click": "alacritty --class htop -e htop"
     },
     "memory": {
-        "interval": "10",
-        "format": " {used} GiB",
-        "tooltip-format": "Mem: {percentage}% / Swap: {swapPercentage}%",
+        "interval": 10,
+        "format": " {used}GiB",
+        "tooltip-format": "Mem: {percentage}%\nSwap: {swapPercentage}%",
 		"on-click": "alacritty --class htop -e htop"
     },
     "temperature": {
@@ -138,8 +140,9 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", ""]
+        "tooltip": false,
+        "format": "<span color=\"gold\">{icon}</span> {percent}%",
+        "format-icons": ["\uf185", ""]
     },
     "battery": {
         "states": {
@@ -147,11 +150,12 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}{capacity}%",
         "format-full": "{icon}{capacity}%",
-        "format-charging": "{capacity}%  ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format-charging": "<span color=\"white\">{capacity}%</span>",
+        "format-plugged": " <span color=\"white\">{capacity}%</span>",
+        "format-alt": "{icon}{time}",
+		"tooltip-format": "Time2empty: {time}\nCharging count: {cycles}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "]
@@ -181,7 +185,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
+        "format": "<span color=\"#ff4d00\">{icon} </span>{volume}%",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",

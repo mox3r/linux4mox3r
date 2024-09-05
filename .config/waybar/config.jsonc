@@ -1,9 +1,9 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-center": [
@@ -16,8 +16,8 @@
         // "custom/media",
     ],
     "modules-left": [
-        // "hyprland/window"
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
     "modules-right": [
         //"mpd",
@@ -32,6 +32,20 @@
         "network",
         "tray"
     ],
+
+    "hyprland/window": {
+        "format": "{class}",
+        "max_length": 25,
+        "rewrite":{
+            "Yandex-browser": "Yandex",
+            "code-oss": "Code",
+            "Alacritty": "Alacritty",
+            "org.telegram.desktop": "Telegram"
+        },
+        "separate-outputs": true,
+        "icon": true
+        
+     },
     // Modules configuration
     "hyprland/workspaces": {
          "disable-scroll": false,
@@ -152,13 +166,13 @@
         },
         "format": "{icon}{capacity}%",
         "format-full": "{icon}{capacity}%",
-        "format-charging": "<span color=\"white\">{capacity}%</span>",
-        "format-plugged": " <span color=\"white\">{capacity}%</span>",
+        "format-charging": " <span color=\"white\">{capacity}%</span>",
+        "format-plugged": " <span color=\"white\">{capacity}%</span>",
         "format-alt": "{icon}{time}",
 		"tooltip-format": "Time2empty: {time}\nCharging count: {cycles}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": ["<span color=\"#f53c3c\"> </span>", "<span color=\"goldenrod\"> </span>", "<span color=\"#ffff00\"> </span>", "<span color=\"#9acd32\"> </span>", "<span color=\"#2ecc71\"> </span>"]
     },
     "power-profiles-daemon": {
       "format": "{icon}",

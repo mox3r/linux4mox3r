@@ -11,7 +11,6 @@ blurred_wallpaper="$HOME/.cache/blurred_wallpaper.png"
 square_wallpaper="$HOME/.cache/square_wallpaper.png"
 rasi_file="$HOME/.cache/current_wallpaper.rasi"
 blur_file="$HOME/dotfiles/.settings/blur.sh"
-default_wallpaper="$HOME/Pictures/wallpaper/default.jpg"
 wallpaper=".cache/l4m-wallpaper-generated/default.jpg"
 blur="50x30"
 
@@ -48,7 +47,6 @@ source "$HOME/.cache/wal/colors.sh"
 
 echo ":: Setting wallpaper with $used_wallpaper"
 killall -e hyprpaper & 
-sleep 0.2; 
 hyprpaper & > /dev/null 2>&1
 
 
@@ -74,4 +72,5 @@ cp $generated_versions/blur-$blur-$wallpaper_filename.png $blurred_wallpaper
 echo ":: Generate new cached wallpaper square-$wallpaper_filename"
 magick $wallpaper -gravity Center -extent 1:1 $square_wallpaper
 cp $square_wallpaper $generated_versions/square-$wallpaper_filename.png
+notify-send -u low -t 1000 "Wallpaper change..." "Done!"
 

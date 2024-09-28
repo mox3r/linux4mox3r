@@ -2,7 +2,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1440, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -11,6 +11,7 @@
         "cpu",
         "memory",
         "temperature"
+        // "custom/icon"
         // "sway/mode",
         // "sway/scratchpad",
         // "custom/media",
@@ -38,6 +39,10 @@
         "format": "  ",
         "tooltip":false,
         "on-click": "eww open --toggle powermenu"
+    },
+
+    "custom/icon":{
+        "exec": "curl wttr.in/Minsk?format=1"
     },
 
     "hyprland/window": {
@@ -161,7 +166,7 @@
         // "device": "acpi_video1",
         "tooltip": false,
         "format": "<span color=\"gold\">{icon}</span> {percent}%",
-        "format-icons": ["\uf185", ""]
+        "format-icons": ["", ""]
     },
     "battery": {
         "states": {
@@ -171,7 +176,7 @@
         },
         "format": "{icon}{capacity}%",
         "format-full": "{icon}{capacity}%",
-        "format-charging": " <span color=\"white\">{capacity}%</span>",
+        "format-charging": " <span color=\"white\">{capacity}%</span>",
         "format-plugged": " <span color=\"white\">{capacity}%</span>",
         "format-alt": "{icon}{time}",
 		"tooltip-format": "Time2empty: {time}\nCharging count: {cycles}",
@@ -196,7 +201,7 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
 	// {essid} - wifi name {signalStrength} - % of signal strenght
 	// {ifname} - {gwaddr} - old hint(tooltip)
-        "format-wifi": "",
+        "format-wifi": "",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid} ({signalStrength})%",
         "format-linked": "{ifname} (No IP) ",

@@ -36,8 +36,8 @@ alias gcredential="git config credential.helper store"
 alias ls='eza --icons'
 alias ll='eza -agl --icons'
 alias lt='eza -a --tree --level=1 --icons'
-alias ld='eza -glD --icons'
-alias lf='eza -glf --color=always --icons'
+alias lsd='eza -glD --icons'
+alias lsf='eza -glf --color=always --icons'
 alias lh='eza -dgl .* --icons'
 
 alias v='$EDITOR'

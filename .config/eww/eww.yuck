@@ -1,85 +1,95 @@
 (defwindow powermenu
   :monitor 0
-  :stacking "fg"
-  :onkeypressed (keyevent :key "esc" :command eww close powermenu)
+  :stacking "overlay"
   :geometry (geometry :width "100%"
-                      :height "100%")
+  :height "100%")
   (powermenu_layout))
 
 (defpoll time :interval "1s"
-    :initial `date +'{"hour":"%H","min":"%M"}'`
-    `date +'{"hour":"%H","min":"%M"}'`)
+  :initial `date +'{"hour":"%H","min":"%M"}'`
+`date +'{"hour":"%H","min":"%M"}'`)
 
 (defpoll net :interval "60s"
-    :initial `N/A`
-    `iwctl station wlan0 show | grep  -i "average" | awk '{print $2}'`)
+  :initial `N/A`
+`iwctl station wlan0 show | grep -i "average" | awk '{print $2}'`)
 
-(defwidget powermenu_layout [] 
-    (box :class "layout-box" :space-evenly false
-      :orientation "vertical" :style "background-image: url('./wallpaper')"
-        (box :valign "start" :space-evenly false :spacing 25
-        (button :class "close-btn" :valign "center" :halign "start" :onclick "eww close powermenu"  "")
-        (label :valign "center" :text "|" :class "sep")
-        (_buttons :suspend "systemctl suspend && eww close powermenu" :shutdown "systemctl poweroff" 
-                  :reboot "systemctl reboot" :logout "loginctl kill-session self" 
-                  :suspend_icon "" :shutdown_icon "" :reboot_icon "" 
-                  :logout_icon "")
-        (_sundial)
-        (_lock :lock "loginctl lock-session && eww close powermenu" :lock_icon "")
-        (_network :rssi net :offline "" :slow "" :okay "" :good "" :exellent "")
-        (_battery :status {EWW_BATTERY.BAT1.status} :battery {EWW_BATTERY.BAT1.capacity}
-                  :charge "" :one "" :two "" :three "" 
-                  :four "" :five "" :six "" :seven "")
-                  )))
+(defpoll wttr :interval "600s"
+  :initial `N/A`
+`curl --silent ru.wttr.in/Minsk?format=1`)
+
+(defwidget powermenu_layout []
+  (box :class "layout-box" :space-evenly false
+    :orientation "vertical" :style "background-image: url('./wallpaper')"
+    (box :valign "start" :space-evenly false :spacing 25
+      (button :class "close-btn" :valign "center" :halign "start" :onclick "eww close powermenu"  "")
+      (label :valign "center" :text "|" :class "sep")
+      (_buttons :suspend "systemctl suspend && eww close powermenu" :shutdown "systemctl poweroff"
+        :reboot "systemctl reboot" :logout "loginctl kill-session self"
+        :suspend_icon "" :shutdown_icon "" :reboot_icon ""
+      :logout_icon "")
+      (_wttr)
+      (_sundial)
+      (_lock :lock "loginctl lock-session && eww close powermenu" :lock_icon "")
+      (_network :rssi net :offline "" :slow "" :okay "" :good "" :exellent "")
+      (_battery :status {EWW_BATTERY.BAT1.status} :battery {EWW_BATTERY.BAT1.capacity}
+        :charge "" :one "" :two "" :three ""
+      :four "" :five "" :six "" :seven "")
+    )))
 
 (defwidget _buttons [suspend suspend_icon shutdown shutdown_icon
-                    reboot reboot_icon logout logout_icon]
-    (box :class "btns-box" :spacing 5
-        :vexpand true :hexpand true
-        :valign "center" :halign "start"
-        :space-evenly false
-    (button :onclick suspend suspend_icon) 
+  reboot reboot_icon logout logout_icon]
+  (box :class "btns-box" :spacing 5
+    :vexpand true :hexpand true
+    :valign "center" :halign "start"
+    :space-evenly true
+    (button :onclick suspend suspend_icon)
     (button :onclick shutdown shutdown_icon)
     (button :onclick reboot reboot_icon)
     (button :onclick logout logout_icon)))
 
 (defwidget _network [rssi offline exellent good okay slow]
-  (box :class "net-box" :space-evenly false :spacing 8 
-      (label :text {rssi == ""? offline :
-                  rssi < -70 ? slow :
-                  rssi < -60 ? okay :
-                  rssi < -50 ? good : exellent})))
+  (box :class "net-box" :space-evenly false :spacing 8 :tooltip "${rssi} dBm"
+    (label :text {rssi == ""? offline :
+      rssi < -70 ? slow :
+      rssi < -60 ? okay :
+    rssi < -50 ? good : exellent})))
 
 (defwidget _lock [lock lock_icon]
-  (box :class "btns-box" :spacing 5 
-      :vexpand true :hexpand true
-      :valign "center" :halign "end"
-      :space-evenly false
+  (box :class "btns-box" :spacing 5
+    :vexpand true
+    :valign "center" :halign "end"
+    :space-evenly true
     (button :onclick lock lock_icon)))
 
-(defwidget _sundial []
+(defwidget _wttr []
   (label :class "sundial-lbl" :hexpand true
-        :valign "center" :halign "end" :spacing 25
-        :space-evenly true
-        :text {time.hour == 0 && time.min <= 15 ? "Midnight" :
-              time.hour >= 3 && time.hour < 4 ? "Early Morning" :
-              time.hour >= 4 && time.hour <= 5 ? "Dawn" :
-              time.hour >= 6 && time.hour < 9 ? "Morning" :
-              time.hour >= 9 && time.hour < 12 ? "Late Morning" :
-              time.hour == 12 && time.min <= 15 ? "Midday" : 
-              time.hour >= 12 && time.hour < 16 ? "Afternoon" :
-              time.hour >= 16 && time.hour <= 17 ? "Late Afternoon" :
-              time.hour >= 18 && time.hour < 19 ? "Early Evening" :
-              time.hour >= 19 && time.hour < 20 ? "Dusk" :
-              time.hour >= 20 && time.hour < 22 ? "Late Evening" :
-              time.hour >= 22 ? "Night" : "Night"}))
+    :valign "center" :halign "end"
+    :space-evenly false
+  :text wttr))
+
+(defwidget _sundial []
+  (label :class "sundial-lbl" ;:hexpand false
+    :valign "center" :halign "end" :spacing 15
+    :space-evenly true
+    :text {time.hour == 0 && time.min <= 15 ? "Midnight" :
+    time.hour >= 3 && time.hour < 4 ? "Early Morning" :
+    time.hour >= 4 && time.hour <= 5 ? "Dawn" :
+    time.hour >= 6 && time.hour < 9 ? "Morning" :
+    time.hour >= 9 && time.hour < 12 ? "Late Morning" :
+    time.hour == 12 && time.min <= 15 ? "Midday" :
+    time.hour >= 12 && time.hour < 16 ? "Afternoon" :
+    time.hour >= 16 && time.hour <= 17 ? "Late Afternoon" :
+    time.hour >= 18 && time.hour < 19 ? "Early Evening" :
+    time.hour >= 19 && time.hour < 20 ? "Dusk" :
+    time.hour >= 20 && time.hour < 22 ? "Late Evening" :
+  time.hour >= 22 ? "Night" : "Night"}))
 
 (defwidget _battery [battery status one two three four five six seven charge]
-  (box :class "bat-box" :space-evenly false :spacing 8
+  (box :class "bat-box" :space-evenly false :spacing 8 :tooltip "${battery}%"
     (label :text {status == "Charging" ? charge :
       battery < 15 ? seven :
-        battery < 30 ? six :
-          battery < 45 ? five :
-            battery < 60 ? four :
-              battery < 75 ? three :
-                battery < 95 ? two : one})))
+      battery < 30 ? six :
+      battery < 45 ? five :
+      battery < 60 ? four :
+      battery < 75 ? three :
+    battery < 95 ? two : one})))

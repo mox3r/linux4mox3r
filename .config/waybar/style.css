@@ -1,76 +1,74 @@
 * {
-	font-family: "Noto Serif", "FontAwesome", "Phosphor";
-	font-weight: normal;
-	font-size: 20;
-	padding: 0 5px;
-	min-height: 0px;
-	min-width: 8px;
+  font-family: "Noto Serif", "FontAwesome", "Phosphor";
+  font-weight: normal;
+  font-size: 20;
+  padding: 0 5px;
+  min-height: 0px;
+  min-width: 8px;
 }
 
 #custom-launcher {
-	font-size: 20px;
-	background-image: url('/home/mox3r/Download/arch.svg');	
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
+  font-size: 20px;
+  background-image: url("/home/mox3r/Download/arch.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 
-	color: lightgray;
+  color: lightgray;
 }
 
-
 window#waybar {
-	background-color: rgba(43, 48, 59, 0.9);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+  background-color: rgba(43, 48, 59, 0.9);
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 
-	border: 1px;
-	border-color: black;
-	border-radius: 5px;
-	box-shadow: none;
-	text-shadow: none;
+  border: 1px;
+  border-color: black;
+  border-radius: 5px;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 #workspaces button {
-	color: #545d70;
-	background-color: transparent;
-	margin: 0px 0px;
-	padding: 0px 2px;
-	font-weight: bold;
+  color: #545d70;
+  background-color: transparent;
+  margin: 0px 0px;
+  padding: 0px 2px;
+  font-weight: bold;
 }
 #workspaces button:hover {
-	color: #d8dee8;
+  color: #d8dee8;
 }
 #workspaces button.active {
-	color: #d8dee8;
-	background-color: transparent;
+  color: #d8dee8;
+  background-color: transparent;
 }
 #workspaces button.urgent {
-	color: #f7768e;
-	background-color: transparent;
+  color: #f7768e;
+  background-color: transparent;
 }
 
-
-#cpu{
-	padding: 0 5px;
-	margin: 0 2px;
-	color:lightpink;
-	font-weight: bold;
-	background-color: transparent;
+#cpu {
+  padding: 0 5px;
+  margin: 0 2px;
+  color: lightpink;
+  font-weight: bold;
+  background-color: transparent;
 }
-#memory{
-	color:aquamarine;
-	font-weight: bold;
-	background-color: transparent;
+#memory {
+  color: aquamarine;
+  font-weight: bold;
+  background-color: transparent;
 }
-#language{
-	font-weight: bold;
-	background-color: transparent;
+#language {
+  font-weight: bold;
+  background-color: transparent;
 }
 #temperature {
-	color:lightskyblue;
-	font-weight: bold;
-	background-color: transparent;
+  color: lightskyblue;
+  font-weight: bold;
+  background-color: transparent;
 }
 
 #battery,
@@ -80,86 +78,87 @@ window#waybar {
 #custom-weather,
 #pulseaudio,
 #clock {
-	padding: 0 5px;
-	margin: 0 2px; 
-	color: #d8dee8;
-	background-color: transparent;
+  padding: 0 5px;
+  margin: 0 2px;
+  color: #d8dee8;
+  background-color: transparent;
 }
 
-#power-profiles-daemon{
-	color: #d8dee8;
-	background-color: transparent;
+#power-profiles-daemon {
+  color: #d8dee8;
+  background-color: transparent;
 }
 #power-profiles-daemon.performance {
-	color:#f53c3c;
-	background-color: transparent;
+  color: #f53c3c;
+  background-color: transparent;
 }
 #power-profiles-daemon.balanced {
-	color: #d8dee8;
-	background-color: transparent;
+  color: #d8dee8;
+  background-color: transparent;
 }
 #power-profiles-daemon.power-saver {
-	color: #2ecc71;
-	background-color: transparent;
+  color: #2ecc71;
+  background-color: transparent;
 }
 
 #custom-menu {
-	color: #0db9d7;
-	padding: 0px 10px;
-	margin: 0px 10px;
-	background-color: transparent;
+  color: #0db9d7;
+  padding: 0px 10px;
+  margin: 0px 10px;
+  background-color: transparent;
 }
 
 #custom-sep {
-	color: rgba(0, 0, 0, 0.0);
-	background-color: transparent;
+  color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 #window {
-	/* color: #0db9d7; */
-    color: #d8dee8;
-	font-weight: bold;
-	background-color: transparent;
+  /* color: #0db9d7; */
+  color: #d8dee8;
+  font-weight: bold;
+  background-color: transparent;
 }
 
-#tray{
-	background-color: rgba(43, 48, 59, 0.9);
+#tray {
+  background-color: rgba(43, 48, 59, 0.9);
 }
-#tray > .passive{
-	-gtk-icon-effect:dim;
+#tray > .passive {
+  -gtk-icon-effect: dim;
 }
 #tray > .needs-attention {
-	-gtk-icon-effect: highlight;
-	background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #network {
-	color: #2ecc71;
-	background-color: transparent;
+  color: #2ecc71;
+  background-color: transparent;
 }
 
 #network.disconnected {
-	color: #f53c3c;
-	background-color: transparent;
+  color: #f53c3c;
+  background-color: transparent;
 }
 
-#battery.charging, #battery.plugged{
-	color: #2ecc71;
-	background-color: transparent;
+#battery.charging,
+#battery.plugged {
+  color: #2ecc71;
+  background-color: transparent;
 }
 
-@keyframes blink{
-	to {
-		color: white;
-	}
+@keyframes blink {
+  to {
+    color: white;
+  }
 }
 
 #battery.critical:not(.charging) {
-	color: #f53c3c;
-	animation-name: blink;
-	animation-duration: 0.5s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	background-color: transparent;
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: transparent;
 }

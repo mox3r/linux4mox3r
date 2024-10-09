@@ -46,11 +46,10 @@ alias vim='$EDITOR'
 alias grep='grep --color=always'
 alias cleanup='$HOME/l4m-dotfiles/scripts/cleanup.sh'
 
-
 eval "$(starship init bash)"
 
 #cat $HOME/.cache/wal/sequences
 
-if [[ $(tty) != *i* ]] ; then
+if [[ $(tty) != *i* ]]; then
 	neofetch
 fi

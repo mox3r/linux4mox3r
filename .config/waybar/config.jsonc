@@ -139,7 +139,7 @@
   },
   "cpu": {
     "interval": 10,
-    "format": "\ue610 {load}%",
+    "format": "\ue610 {usage}%",
     "tooltip": true,
     "tooltip-format": "avg_frequency",
     "on-click": "alacritty --class htop -e htop"

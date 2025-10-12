@@ -15,7 +15,7 @@
 
 (defpoll wttr :interval "600s"
   :initial `N/A`
-`curl --silent ru.wttr.in/Minsk?format=1`)
+`curl --silent https://ru.wttr.in/Minsk?format=1`)
 
 (defwidget powermenu_layout []
   (box :class "layout-box" :space-evenly false

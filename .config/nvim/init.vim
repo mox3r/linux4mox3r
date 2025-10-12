@@ -15,10 +15,10 @@ syntax on
 
 call plug#begin()
 Plug 'morhetz/gruvbox'
-Plug 'kaicataldo/material.vim', {'branch': 'main'}
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
-Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 let g:Heksokinase_hilighters = ['virtual']

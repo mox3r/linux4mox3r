@@ -3,13 +3,13 @@
 clear
 
 if [[ $1 == all ]]; then
-	curl --silent ru.wttr.in/Minsk?Q
+	curl --silent https://ru.wttr.in/Minsk?Q
 elif [[ $1 == v2 ]] ||
 	[[ $1 == 1 ]] ||
 	[[ $1 == 2 ]] ||
 	[[ $1 == 3 ]] ||
 	[[ $1 == 4 ]]; then
-	curl --silent ru.wttr.in/Minsk?format=$1
+	curl --silent https://ru.wttr.in/Minsk?format=$1
 else
-	curl --silent ru.wttr.in/Minsk?Q1
+	curl --silent https://ru.wttr.in/Minsk?Q1
 fi

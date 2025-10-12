@@ -7,19 +7,20 @@
   min-width: 8px;
 }
 
+@define-color text-wt #d8dee8;
+
 #custom-launcher {
   font-size: 20px;
-  background-image: url("/home/mox3r/Download/arch.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 
-  color: lightgray;
+  color: @text-wt;
 }
 
 window#waybar {
   background-color: rgba(43, 48, 59, 0.9);
-  color: #ffffff;
+  color: @text-wt;
   transition-property: background-color;
   transition-duration: 0.5s;
 
@@ -38,10 +39,10 @@ window#waybar {
   font-weight: bold;
 }
 #workspaces button:hover {
-  color: #d8dee8;
+  color: @text-wt;
 }
 #workspaces button.active {
-  color: #d8dee8;
+  color: @text-wt;
   background-color: transparent;
 }
 #workspaces button.urgent {
@@ -80,12 +81,12 @@ window#waybar {
 #clock {
   padding: 0 5px;
   margin: 0 2px;
-  color: #d8dee8;
+  color: @text-wt;
   background-color: transparent;
 }
 
 #power-profiles-daemon {
-  color: #d8dee8;
+  color: @text-wt;
   background-color: transparent;
 }
 #power-profiles-daemon.performance {
@@ -93,7 +94,7 @@ window#waybar {
   background-color: transparent;
 }
 #power-profiles-daemon.balanced {
-  color: #d8dee8;
+  color: @text-wt;
   background-color: transparent;
 }
 #power-profiles-daemon.power-saver {
@@ -115,7 +116,7 @@ window#waybar {
 
 #window {
   /* color: #0db9d7; */
-  color: #d8dee8;
+  color: @text-wt;
   font-weight: bold;
   background-color: transparent;
 }
@@ -143,13 +144,13 @@ window#waybar {
 
 #battery.charging,
 #battery.plugged {
-  color: #2ecc71;
+  color: @text-wt;
   background-color: transparent;
 }
 
 @keyframes blink {
   to {
-    color: white;
+    color: @text-wt;
   }
 }
 

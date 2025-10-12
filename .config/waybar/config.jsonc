@@ -7,11 +7,12 @@
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-center": [
+    "custom/updates",
     "power-profiles-daemon",
     "cpu",
     "memory",
-    "temperature"
-    // "custom/icon"
+    "temperature",
+    "custom/weather"
     // "sway/mode",
     // "sway/scratchpad",
     // "custom/media",
@@ -21,13 +22,13 @@
     //"mpd",
     // "idle_inhibitor",
     "battery",
-    "backlight",
+    //"backlight",
+    "hyprland/language",
     "pulseaudio",
     //"battery#bat2",
-    "hyprland/language",
     // "keyboard-state",
-    "clock",
     "network",
+    "clock",
     "tray"
   ],
 
@@ -37,9 +38,16 @@
     "on-click": "eww open --toggle powermenu"
   },
 
-  "custom/icon": {
+  "custom/updates": {
     "interval": 600,
-    "exec": "curl wttr.in/Minsk?format=1"
+    "exec": "checkupdates-with-aur | wc -l",
+    "on-click": "checkupdates-with-aur | wc -l"
+
+  },
+
+  "custom/weather": {
+    "interval": 300,
+    "exec": "curl https://ru.wttr.in/Minsk?format=1"
   },
 
   "hyprland/window": {
@@ -134,12 +142,33 @@
     "interval": 5,
     "format": "{:%H:%M}",
     "timezone": "Europe/Minsk",
-    "tooltip-format": "<big>{:%D %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%h-%d}"
+    "tooltip-format": "<tt><small><b>{:%a %d}</b> {calendar}</small></tt>",
+    "format-alt": "{:%Y-%h-%d}",
+    "calendar": {
+		"mode"          : "month",
+		"mode-mon-col"  : 3,
+		"weeks-pos"     : "left",
+		"on-scroll"     : 1,
+		"on-click-right": "mode",
+		"format": {
+			"months":     "<span color='#ffead3'><b>{}</b></span>",
+			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+			"today":      "<span color='#ff6699'><b>{}</b></span>"
+		}
+	},
+	"actions": {
+		"on-click-right": "mode",
+		"on-click-forward": "tz_up",
+		"on-click-backward": "tz_down",
+		"on-scroll-up": "shift_up",
+		"on-scroll-down": "shift_down"
+	}
   },
   "cpu": {
     "interval": 10,
-    "format": "\ue610 {usage}%",
+    "format": "  {usage}%",
     "tooltip": true,
     "tooltip-format": "avg_frequency",
     "on-click": "alacritty --class htop -e htop"
@@ -156,13 +185,13 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{icon} {temperatureC}°C",
-    "format-icons": ["", "", ""]
+    "format-icons": [" "]
   },
   "backlight": {
     // "device": "acpi_video1",
     "tooltip": false,
     "format": "<span color=\"gold\">{icon}</span> {percent}%",
-    "format-icons": ["", ""]
+    "format-icons": [" "]
   },
   "battery": {
     "states": {
@@ -170,11 +199,11 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}{capacity}%",
-    "format-full": "{icon}{capacity}%",
-    "format-charging": " <span color=\"white\">{capacity}%</span>",
-    "format-plugged": " <span color=\"white\">{capacity}%</span>",
-    "format-alt": "{icon}{time}",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "<span color=\"#2ecc71\"> </span> {capacity}%",
+    "format-plugged": "<span color=\"#2ecc71\"></span> {capacity}%"  ,
+    "format-alt": "{icon} {time}",
     "tooltip-format": "Time2empty: {time}\nCharging count: {cycles}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
@@ -193,25 +222,22 @@
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": "",
+      "balanced": " ",
       "power-saver": ""
     }
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    // {essid} - wifi name {signalStrength} - % of signal strenght
-    // {ifname} - {gwaddr} - old hint(tooltip)
-    "format-wifi": "",
+    "format-wifi": " ",
     "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{essid} ({signalStrength})%",
+    "tooltip-format": "{essid}: {signalStrength}%\nIP: {ipaddr}",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "⚠",
+    "format-disconnected": " ",
     // "format-alt": "{ifname}: {ipaddr}/{cidr}"
     "on-click": "iwgtk"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "<span color=\"#ff4d00\">{icon} </span>{volume}%",
+    "format": "{icon}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
@@ -225,7 +251,7 @@
       "portable": " ",
       "car": " ",
 
-      "default": ["", "", ""]
+      "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
   },
